@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="icon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="dataentry.css" />
+    <title>Admin</title>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="navbar-logo">
+                <img src="logo.png" alt="Logo" />
+            </div>
+        </div>
+    </header>
+    <div class="btn-con">
+        <a href="#">Home</a>
+        <div class="link"><a href="dataentry.html">Add Entry</a></div>
+        <a href="#">Customers</a>
+        <a href="#">Payments</a>
+        <a href="#">Account</a>
+    </div>
+    <div class="container">
+        <div class="textinput">
+            <form action="process_form.php" method="POST">
+                <div class="in1">
+                    <label for="customer_name">Name:</label>
+                    <input type="text" id="customer_name" name="name" required /><br />
+                </div>
+
+                <div class="in2">
+                    <label for="customer_phone"> Phone:</label>
+                    <input type="tel" id="customer_phone" name="phone" required /><br />
+                </div>
+
+                <div class="in3">
+                    <label for="customer_address">Address:</label>
+                    <input type="text" id="customer_address" name="address" required /><br />
+                </div>
+
+                <div class="table-container">
+                    <table id="data-table">
+                        <tr>
+                            <th>Amount</th>
+                            <th>Weight</th>
+                            <th>To Centre</th>
+                            <th>A.W.B No</th>
+                            <th>Date</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="amount[]" required /></td>
+                            <td><input type="text" name="weight[]" required /></td>
+                            <td><input type="text" name="to_centre[]" required /></td>
+                            <td><input type="text" name="awb_no[]" required /></td>
+                            <td><input type="date" name="entry_date[]" required /></td>
+                        </tr>
+                    </table>
+                    <div class="end">
+                        <hr />
+                        <button type="button" onclick="addRow()">Add Row</button>
+                        <button type="button" onclick="calculateTotal()">
+                            Calculate Total
+                        </button>
+                        <button type="button"><a href="dataentry.html">Reset</a></button>
+                        <div class="total-paid-due">
+                            <label for="total_amount">Total Amount:</label>
+                            <input type="text" id="total_amount" name="total_amount" readonly />
+
+                            <label for="paid_amount">Paid Amount:</label>
+                            <input type="text" id="paid_amount" name="paid_amount" oninput="updateDue()" />
+
+                            <label for="due_amount">Due Amount:</label>
+                            <input type="text" id="due_amount" name="due_amount" readonly />
+
+                            <label for="row_count">Number of Couriers:</label>
+                            <input type="text" id="row_count" name="row_count" readonly />
+                        </div>
+
+                    </div>
+                    <div class="in4">
+                        <input type="submit" value="Submit" />
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            function addRow() {
+                var table = document.getElementById("data-table");
+                var newRow = table.insertRow(table.rows.length);
+                var cell1 = newRow.insertCell(0);
+                var cell2 = newRow.insertCell(1);
+                var cell3 = newRow.insertCell(2);
+                var cell4 = newRow.insertCell(3);
+                var cell5 = newRow.insertCell(4);
+
+                cell1.innerHTML = '<input type="text" name="amount[]" required>';
+                cell2.innerHTML = '<input type="text" name="weight[]" required>';
+                cell3.innerHTML = '<input type="text" name="to_centre[]" required>';
+                cell4.innerHTML = '<input type="text" name="awb_no[]" required>';
+                cell5.innerHTML = '<input type="date" name="entry_date[]" required>';
+
+                updateRowCount();
+            }
+
+            function calculateTotal() {
+                var amounts = document.getElementsByName("amount[]");
+                var totalAmount = 0;
+
+                for (var i = 0; i < amounts.length; i++) {
+                    totalAmount += parseFloat(amounts[i].value) || 0;
+                }
+
+                document.getElementById("total_amount").value =
+                    totalAmount.toFixed(2);
+                updateDue();
+            }
+
+            function updateRowCount() {
+                var rowCount = document.getElementById("data-table").rows.length - 1;
+                document.getElementById("row_count").value = rowCount;
+            }
+
+            function updateDue() {
+                var totalAmount =
+                    parseFloat(document.getElementById("total_amount").value) || 0;
+                var paidAmount =
+                    parseFloat(document.getElementById("paid_amount").value) || 0;
+
+                var dueAmount = totalAmount - paidAmount;
+
+                document.getElementById("due_amount").value = dueAmount.toFixed(2);
+            }
+        </script>
+    </div>
+</body>
+
+</html>

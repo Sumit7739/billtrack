@@ -1,0 +1,219 @@
+body {
+  background: #0f2027;
+  background: -webkit-linear-gradient(to right, #2c5364, #203a43, #0f2027);
+  background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+}
+
+.btn-con {
+  position: absolute;
+  margin-left: 3px;
+  left: 0;
+  top: 20%;
+  height: 30vh;
+  width: 190px;
+  background-color: #333;
+  padding-top: 25px;
+  padding-bottom: 30px;
+  border-radius: 15px;
+  box-shadow: 4px 8px 4px 0px rgba(0, 0, 0, 0.548);
+}
+
+.btn-con a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 20px 50px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-con a:hover {
+  background-color: #555;
+}
+.link a {
+  background-color: #a07171;
+  border-radius: 10px;
+}
+.container {
+  margin-top: 20px;
+  margin-left: 15%;
+  height: 60vh;
+  display: auto;
+  overflow: auto;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  border-radius: 19px;
+  background: linear-gradient(
+    90deg,
+    #cd6b10 0%,
+    rgba(19, 95, 138, 0.8) 101.97%
+  );
+  box-shadow: 4px 6px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.textinput {
+  position: relative;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.in2 {
+  position: absolute;
+  top: 0%;
+  margin-left: 30%;
+  align-items: flex-start;
+}
+.in3 {
+  position: absolute;
+  top: 0%;
+  margin-left: 60%;
+}
+.in4 {
+  position: absolute;
+  top: 0%;
+  margin-left: 92%;
+}
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="email"],
+input[type="tel"],
+input[type="file"] {
+  width: 200px;
+  height: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  font-family: "Poppins", sans-serif;
+  border-radius: 5px;
+  border: 0.5px solid #eee;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+#customer_name,
+#customer_phone,
+#customer_address {
+  width: 220px;
+}
+
+/* Table styles */
+.table-container {
+  margin-top: 20px;
+}
+
+#data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+#data-table th,
+#data-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Input field styles */
+.textinput input[type="text"],
+.textinput input[type="tel"],
+.textinput input[type="date"],
+.textinput input[type="number"] {
+  width: 100%;
+  /* Make the input fields full-width by default */
+  box-sizing: border-box;
+}
+
+.total-paid-due {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.total-paid-due label,
+.total-paid-due input {
+  width: calc(33.33% - 10px);
+  /* Adjust the width as needed */
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+#total_amount,
+#paid_amount,
+#due_amount,
+#row_count {
+  width: 20%;
+  margin-right: 50px;
+}
+
+#total_amount,
+#due_amount,
+#row_count {
+  color: #ffffff;
+  border-radius: 6px;
+  background: #827d7d;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+/* Button styles */
+button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+button a {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+input[type="text"] {
+  width: 200px;
+}
+
+.end {
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 15px;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  background: #141e30;
+  background: -webkit-linear-gradient(to right, #243b55, #141e30);
+  background: linear-gradient(to right, #243b55, #141e30);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+hr {
+  width: 100%;
+}
+
+.in4 input[type="submit"] {
+  width: 85px;
+  height: 33px;
+  border-radius: 5px;
+  background: #0df795;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.in4 input[type="submit"]:hover{
+  background-color:#0df796c4;
+}

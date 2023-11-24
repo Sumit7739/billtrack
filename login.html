@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="stylelogin1.css"> -->
+  <title>Login</title>
+  <style>
+    .error-msg {
+      position: relative;
+      color: red;
+      font-size: 20px;
+      margin-top: 5px;
+      margin-left: 25%;
+    }
+
+ .navbar {
+     position: relative;
+     top: 0;
+     width: 100%;
+     padding: 30px 100px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     background-color: #F4791F;
+    box-shadow: 4px 6px 4px 0px rgba(0, 0, 0, 0.25);
+ }
+    .navbar-logo img {
+      height: 100px;
+      /* Adjust the height as needed */
+    }
+
+    body {
+      background: #abcdef;
+      font-family: Assistant, sans-serif;
+      display: flex;
+      min-height: 90vh;
+    }
+
+    .login {
+      position: absolute;
+      top: 10%;
+      left: 35%;
+      color: white;
+      background: #136a8a;
+      background: -webkit-linear-gradient(to right, #267871, #136a8a);
+      background: linear-gradient(to right, #267871, #136a8a);
+      margin: auto;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2),
+        0px 10px 20px rgba(0, 0, 0, 0.3), 0px 30px 60px 1px rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      width: 30%;
+      height: 50%;
+      padding: 50px;
+    }
+
+    .login .head {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login .head .company {
+      font-size: 2.2em;
+    }
+
+    .login .msg {
+      text-align: center;
+      font-size: 1.3em;
+    }
+
+    .login .form input[type="email"].email {
+      border: none;
+      background: none;
+      box-shadow: 0px 2px 0px 0px white;
+      width: 100%;
+      color: white;
+      font-size: 1em;
+      outline: none;
+    }
+
+    .login .form .text::placeholder {
+      color: #d3d3d3;
+    }
+
+    .login .form input[type="email"].email {
+      border: none;
+      background: none;
+      box-shadow: 0px 2px 0px 0px white;
+      width: 100%;
+      color: white;
+      margin-bottom: 15px;
+      margin-top: 45px;
+      font-size: 1em;
+      outline: none;
+    }
+
+    .login .form .email::placeholder {
+      color: #d3d3d3;
+    }
+
+    .login .form input[type="password"].password {
+      border: none;
+      background: none;
+      box-shadow: 0px 2px 0px 0px white;
+      width: 100%;
+      color: white;
+      font-size: 1em;
+      outline: none;
+      margin-bottom: 30px;
+      margin-top: 30px;
+    }
+
+    .login .form .password::placeholder {
+      color: #d3d3d3;
+    }
+
+    .login .form .btn-login {
+      background: none;
+      text-decoration: none;
+      color: white;
+      box-shadow: 0px 0px 0px 2px white;
+      border-radius: 3px;
+      padding: 5px 2em;
+      transition: 0.5s;
+    }
+
+    .login .form .btn-login:hover {
+      background: white;
+      color: dimgray;
+      transition: 0.5s;
+    }
+
+    .login .log {
+      text-decoration: none;
+      font-size: 1.2em;
+      text-decoration: underline;
+      color: white;
+      float: right;
+      margin-top: 5px;
+      margin-left: 15px;
+    }
+
+    .login .log1 {
+      text-decoration: none;
+      font-size: 1.2em;
+      text-decoration: underline;
+      color: white;
+      float: right;
+      margin-left: 50px;
+      margin-top: 10px;
+    }
+
+    footer {
+      position: absolute;
+      color: #136a8a;
+      bottom: 10px;
+      padding-left: 20px;
+    }
+
+    footer p {
+      display: inline;
+      font-size: 1.5em;
+      text-decoration: underline;
+    }
+
+    footer a {
+      color: green;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    footer .heart {
+      color: #b22222;
+      font-size: 1.5em;
+    }
+
+    .navbar-logo img {
+      height: 100px;
+      /* Adjust the height as needed */
+    }
+
+
+
+    button {
+      width: 120px;
+      height: 45px;
+      padding: 8px 16px;
+      margin-top: 15px;
+      background-color: #f1f1f1;
+      color: #333;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ddd;
+    }
+
+    .navbar-buttons button {
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-logo">
+        <a href="index.html"><img src="logo.png" alt="Logo" /></a>
+      </div>
+      <!-- <div class="navbar-buttons">
+        <a href="index.html"><button class="btn1">HOME</button></a>
+      </div> -->
+    </div>
+    <section class="login" id="login">
+      <form method="POST">
+        <div class="head">
+          <h1 class="company">User Login</h1>
+        </div>
+        <p class="msg">Welcome Back</p>
+        <?php if (isset($error)): ?>
+          <p class="error-msg">
+            <?php echo $error; ?>
+          </p>
+        <?php endif; ?>
+        <div class="form">
+          <input type="email" id="email" class="email" name="email" placeholder="Email" required>
+
+          <input type="password" id="password" class="password" name="password" placeholder="Password (0-8)" required maxlength="8">
+          <button type="submit" class="btn-login" name="submit">Login</button>
+          <span>
+            <a href="forgot.php" class="log1">Forgot Password</a>
+            <a href="signup.php" class="log">SignUp</a>
+          </span>
+      </form>
+      </div>
+    </section>
+    <footer>
+      <p>Created By Sumit Srivastava</p>
+    </footer>
+    <!-- partial -->
+    <!-- <script src="./scriptlogin.js"></script> -->
+  </body>
+
+</html>
