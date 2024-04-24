@@ -1,142 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="icon.ico" type="image/x-icon" />
+    <link rel="icon" href="icon.ico" type="image/x-icon" sizes="32x32" />
     <link rel="stylesheet" href="dataentry.css" />
     <title>Admin</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <div class="navbar">
-            <div class="navbar-logo">
-                <img src="logo.png" alt="Logo" />
-            </div>
+      <div class="navbar">
+        <div class="navbar-logo">
+          <img src="logo.png" alt="Logo" />
         </div>
+      </div>
     </header>
     <div class="btn-con">
-        <a href="#">Home</a>
-        <div class="link"><a href="dataentry.html">Add Entry</a></div>
-        <a href="#">Customers</a>
-        <a href="#">Payments</a>
-        <a href="#">Account</a>
+      <a href="home.html">Home</a>
+      <div class="link"><a href="dataentry.html">Add Entry</a></div>
+      <a href="customers.php">Customers</a>
+    </div>
+    <div class="btn-con1">
+      <h1>Customers Entry</h1>
+    </div>
+    <div class="calculator">
+      <div class="display">
+        <input type="text" placeholder="0" id="input" disabled />
+      </div>
+      <div class="buttons">
+        <!-- Full Erase -->
+        <input type="button" value="AC" id="clear" />
+        <!-- Erase Single Value -->
+        <input type="button" value="DEL" id="erase" />
+        <input type="button" value="/" class="input-button" />
+        <input type="button" value="*" class="input-button" />
+        <input type="button" value="7" class="input-button" />
+        <input type="button" value="8" class="input-button" />
+        <input type="button" value="9" class="input-button" />
+        <input type="button" value="-" class="input-button" />
+        <input type="button" value="6" class="input-button" />
+        <input type="button" value="5" class="input-button" />
+        <input type="button" value="4" class="input-button" />
+        <input type="button" value="+" class="input-button" />
+        <input type="button" value="1" class="input-button" />
+        <input type="button" value="2" class="input-button" />
+        <input type="button" value="3" class="input-button" />
+        <input type="button" value="=" id="equal" />
+        <input type="button" value="0" class="input-button" />
+        <input type="button" value="." class="input-button" />
+      </div>
     </div>
     <div class="container">
-        <div class="textinput">
-            <form action="process_form.php" method="POST">
-                <div class="in1">
-                    <label for="customer_name">Name:</label>
-                    <input type="text" id="customer_name" name="name" required /><br />
-                </div>
+      <div class="textinput">
+        <form action="process_form.php" method="POST">
+          <div class="in1">
+            <label for="customer_name">Name:</label>
+            <input type="text" id="customer_name" name="name" required /><br />
+          </div>
 
-                <div class="in2">
-                    <label for="customer_phone"> Phone:</label>
-                    <input type="tel" id="customer_phone" name="phone" required /><br />
-                </div>
+          <div class="in2">
+            <label for="customer_phone"> Phone:</label>
+            <input type="tel" id="customer_phone" name="phone" required /><br />
+          </div>
 
-                <div class="in3">
-                    <label for="customer_address">Address:</label>
-                    <input type="text" id="customer_address" name="address" required /><br />
-                </div>
+          <div class="in3">
+            <label for="customer_address">Address:</label>
+            <input
+              type="text"
+              id="customer_address"
+              name="address"
+              required
+            /><br />
+          </div>
 
-                <div class="table-container">
-                    <table id="data-table">
-                        <tr>
-                            <th>Amount</th>
-                            <th>Weight</th>
-                            <th>To Centre</th>
-                            <th>A.W.B No</th>
-                            <th>Date</th>
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="amount[]" required /></td>
-                            <td><input type="text" name="weight[]" required /></td>
-                            <td><input type="text" name="to_centre[]" required /></td>
-                            <td><input type="text" name="awb_no[]" required /></td>
-                            <td><input type="date" name="entry_date[]" required /></td>
-                        </tr>
-                    </table>
-                    <div class="end">
-                        <hr />
-                        <button type="button" onclick="addRow()">Add Row</button>
-                        <button type="button" onclick="calculateTotal()">
-                            Calculate Total
-                        </button>
-                        <button type="button"><a href="dataentry.html">Reset</a></button>
-                        <div class="total-paid-due">
-                            <label for="total_amount">Total Amount:</label>
-                            <input type="text" id="total_amount" name="total_amount" readonly />
+          <div class="table-container">
+            <table id="data-table">
+              <tr>
+                <th>Weight</th>
+                <th>Amount</th>
+                <th>To Centre</th>
+                <th>A.W.B No</th>
+                <th>Date</th>
+              </tr>
+              <tr>
+                <td><input type="text" name="weight[]" required /></td>
+                <td><input type="text" name="amount[]" required /></td>
+                <td><input type="text" name="to_centre[]" required /></td>
+                <td><input type="text" name="awb_no[]" required /></td>
+                <td><input type="date" name="entry_date[]" required /></td>
+              </tr>
+            </table>
+            <div class="end">
+              <button type="button" onclick="addRow()">Add Row</button>
+              <button type="button" onclick="removeRow()">Remove Row</button>
 
-                            <label for="paid_amount">Paid Amount:</label>
-                            <input type="text" id="paid_amount" name="paid_amount" oninput="updateDue()" />
+              <button type="button" onclick="calculateTotal()">
+                Calculate Total
+              </button>
+              <button class="btn" type="button">
+                <a href="dataentry.html">Reset</a>
+              </button>
+              <div class="total-paid-due">
+                <label for="total_amount">Total Amount:</label>
+                <input
+                  type="text"
+                  id="total_amount"
+                  name="total_amount"
+                  readonly
+                  required
+                />
 
-                            <label for="due_amount">Due Amount:</label>
-                            <input type="text" id="due_amount" name="due_amount" readonly />
+                <label for="paid_amount">Paid Amount:</label>
+                <input
+                  type="text"
+                  id="paid_amount"
+                  name="paid_amount"
+                  oninput="updateDue()"
+                  required
+                />
 
-                            <label for="row_count">Number of Couriers:</label>
-                            <input type="text" id="row_count" name="row_count" readonly />
-                        </div>
+                <label for="due_amount">Due Amount:</label>
+                <input
+                  type="text"
+                  id="due_amount"
+                  name="due_amount"
+                  readonly
+                  required
+                />
 
-                    </div>
-                    <div class="in4">
-                        <input type="submit" value="Submit" />
-                    </div>
-                </div>
-            </form>
-        </div>
+                <label for="row_count">Number of Couriers:</label>
+                <input
+                  type="text"
+                  id="row_count"
+                  name="row_count"
+                  value="1"
+                  readonly
+                />
+              </div>
+            </div>
+            <div class="in4">
+              <input type="submit" value="Submit" />
+            </div>
+          </div>
+        </form>
+      </div>
 
-        <script>
-            function addRow() {
-                var table = document.getElementById("data-table");
-                var newRow = table.insertRow(table.rows.length);
-                var cell1 = newRow.insertCell(0);
-                var cell2 = newRow.insertCell(1);
-                var cell3 = newRow.insertCell(2);
-                var cell4 = newRow.insertCell(3);
-                var cell5 = newRow.insertCell(4);
+      <script>
+        function addRow() {
+          var table = document.getElementById("data-table");
+          var newRow = table.insertRow(table.rows.length);
+          var cell1 = newRow.insertCell(0);
+          var cell2 = newRow.insertCell(1);
+          var cell3 = newRow.insertCell(2);
+          var cell4 = newRow.insertCell(3);
+          var cell5 = newRow.insertCell(4);
 
-                cell1.innerHTML = '<input type="text" name="amount[]" required>';
-                cell2.innerHTML = '<input type="text" name="weight[]" required>';
-                cell3.innerHTML = '<input type="text" name="to_centre[]" required>';
-                cell4.innerHTML = '<input type="text" name="awb_no[]" required>';
-                cell5.innerHTML = '<input type="date" name="entry_date[]" required>';
+          cell1.innerHTML = '<input type="text" name="amount[]" required>';
+          cell2.innerHTML = '<input type="text" name="weight[]" required>';
+          cell3.innerHTML = '<input type="text" name="to_centre[]" required>';
+          cell4.innerHTML = '<input type="text" name="awb_no[]" required>';
+          cell5.innerHTML = '<input type="date" name="entry_date[]" required>';
 
-                updateRowCount();
+          updateRowCount();
+        }
+
+        function removeRow() {
+          var table = document.getElementById("data-table");
+          var rowCount = table.rows.length;
+
+          // Ensure there is at least one row before removing
+          if (rowCount > 1) {
+            table.deleteRow(rowCount - 1);
+            updateRowCount();
+          } else {
+            alert("Cannot remove the last row.");
+          }
+        }
+
+        function calculateTotal() {
+          var amounts = document.getElementsByName("amount[]");
+          var totalAmount = 0;
+
+          for (var i = 0; i < amounts.length; i++) {
+            totalAmount += parseFloat(amounts[i].value) || 0;
+          }
+
+          document.getElementById("total_amount").value =
+            totalAmount.toFixed(2);
+          updateDue();
+        }
+
+        function updateRowCount() {
+          var rowCount = document.getElementById("data-table").rows.length - 1;
+          document.getElementById("row_count").value = rowCount;
+        }
+
+        function updateDue() {
+          var totalAmount =
+            parseFloat(document.getElementById("total_amount").value) || 0;
+          var paidAmount =
+            parseFloat(document.getElementById("paid_amount").value) || 0;
+
+          var dueAmount = totalAmount - paidAmount;
+
+          document.getElementById("due_amount").value = dueAmount.toFixed(2);
+        }
+        let equal_pressed = 0;
+        //Refer all buttons excluding AC and DEL
+        let button_input = document.querySelectorAll(".input-button");
+        //Refer input,equal,clear and erase
+        let input = document.getElementById("input");
+        let equal = document.getElementById("equal");
+        let clear = document.getElementById("clear");
+        let erase = document.getElementById("erase");
+
+        window.onload = () => {
+          input.value = "";
+        };
+
+        //Access each class using forEach
+        button_input.forEach((button_class) => {
+          button_class.addEventListener("click", () => {
+            if (equal_pressed == 1) {
+              input.value = "";
+              equal_pressed = 0;
             }
+            //display value of each button
+            input.value += button_class.value;
+          });
+        });
 
-            function calculateTotal() {
-                var amounts = document.getElementsByName("amount[]");
-                var totalAmount = 0;
-
-                for (var i = 0; i < amounts.length; i++) {
-                    totalAmount += parseFloat(amounts[i].value) || 0;
-                }
-
-                document.getElementById("total_amount").value =
-                    totalAmount.toFixed(2);
-                updateDue();
+        //Solve the user's input when clicked on equal sign
+        equal.addEventListener("click", () => {
+          equal_pressed = 1;
+          let inp_val = input.value;
+          try {
+            //evaluate user's input
+            let solution = eval(inp_val);
+            //True for natural numbers
+            //false for decimals
+            if (Number.isInteger(solution)) {
+              input.value = solution;
+            } else {
+              input.value = solution.toFixed(2);
             }
+          } catch (err) {
+            //If user has entered invalid input
+            alert("Invalid Input");
+          }
+        });
 
-            function updateRowCount() {
-                var rowCount = document.getElementById("data-table").rows.length - 1;
-                document.getElementById("row_count").value = rowCount;
-            }
-
-            function updateDue() {
-                var totalAmount =
-                    parseFloat(document.getElementById("total_amount").value) || 0;
-                var paidAmount =
-                    parseFloat(document.getElementById("paid_amount").value) || 0;
-
-                var dueAmount = totalAmount - paidAmount;
-
-                document.getElementById("due_amount").value = dueAmount.toFixed(2);
-            }
-        </script>
+        //Clear Whole Input
+        clear.addEventListener("click", () => {
+          input.value = "";
+        });
+        //Erase Single Digit
+        erase.addEventListener("click", () => {
+          input.value = input.value.substr(0, input.value.length - 1);
+        });
+      </script>
     </div>
-</body>
-
+  </body>
 </html>
