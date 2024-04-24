@@ -33,6 +33,17 @@ To start using the Courier Management Web Application:
 2. Create an account to access the application.
 3. Begin adding and managing customer data, tracking dues, sending bills, and more.
 
+## Release Notes - Version 1.0
+
+This is the initial release of the Courier Management Web Application. In this release, we have introduced the following features:
+
+- Ability to add and manage customer data.
+- Tracking of dues, bills, and payment history.
+- Automated sending of bills through email.
+- Auto calculation of bills based on predefined rules.
+- Automated reminders for overdue payments.
+
+
 ## Disclaimer
 
 This project does not currently accept contributions. However, users are encouraged to explore the application and provide feedback or suggestions for improvement.
