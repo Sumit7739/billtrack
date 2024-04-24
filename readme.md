@@ -43,7 +43,6 @@ This is the initial release of the Courier Management Web Application. In this r
 - Auto calculation of bills based on predefined rules.
 - Automated reminders for overdue payments.
 
-
 ## Disclaimer
 
 This project does not currently accept contributions. However, users are encouraged to explore the application and provide feedback or suggestions for improvement.
