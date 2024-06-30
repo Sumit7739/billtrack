@@ -1,6 +1,6 @@
-# Courier Management Web Application
+#Bill Tracking Web Application
 
-Welcome to the Courier Management Web Application, designed specifically for courier businesses to streamline operations and manage customer data effectively.
+Welcome to the Bill Tracking Web Application, designed specifically for businesses to streamline operations and manage customer data effectively.
 
 To visit click on the link -[Visit WEBAPP](https://amodenterprise.000webhostapp.com/)
 
@@ -35,7 +35,7 @@ To start using the Courier Management Web Application:
 
 ## Release Notes - Version 1.0
 
-This is the initial release of the Courier Management Web Application. In this release, we have introduced the following features:
+This is the initial release of the Bill Tracking Web Application. In this release, we have introduced the following features:
 
 - Ability to add and manage customer data.
 - Tracking of dues, bills, and payment history.
